@@ -8,7 +8,8 @@ plugins {
 android {
     namespace = "com.example.deeplink_lab"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    buildToolsVersion = "36.1.0"
+    ndkVersion = "29.0.14206865"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
