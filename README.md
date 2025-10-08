@@ -1,16 +1,4 @@
 # deeplink_lab
+## Reflection
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Let's keep this short. Android intent filters are just navigation routes with extra steps. while navigation routes are hard-coded into the codes, intents allows for users to enter a specific part of the app quickly via a link. This is apparently what's called "deep linking". One example I can think of is of Duolingo's streak reminder notification, which immediately puts you in a course to complete when you pressed that notification. As for difficulties, aside from the fact that I changed the driver from D: to E: which for some reason some particular part refuses to refactor, or that flutter wants to use android sdk 35.0.0 while only having 36.1.0, everything else seems fine. Nothing significant really happened.
