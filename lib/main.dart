@@ -2,7 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:app_links/app_links.dart';
 import 'dart:async';
 
-void main() => runApp(MyApp());
+void main() => runApp(Starter());
+
+class Starter extends StatelessWidget {
+  const Starter({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Deep Link Demo',
+      home: MyApp(),
+    );
+  }
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -47,18 +59,17 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _handleIncomingLink(Uri uri) {
-    // Misal link: myapp://details?id=123
-    if (uri.pathSegments.isNotEmpty && uri.pathSegments.first == 'details') {
-      final id = uri.queryParameters['id'] ?? 'unknown';
+    if (uri.pathSegments.isNotEmpty && uri.host == 'details') {
+      final id = uri.pathSegments.first;
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (_) => DetailScreen(id: id)),
+        MaterialPageRoute(builder: (context) => DetailScreen(id: id)),
       );
-    } else if(uri.pathSegments.isNotEmpty && uri.pathSegments.first == 'profile'){
-      final username = uri.queryParameters['username'] ?? 'Guest';
+    } else if(uri.pathSegments.isNotEmpty && uri.host == 'profile'){
+      final username = uri.pathSegments.first;
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (_) => ProfileScreen(username: username)),
+        MaterialPageRoute(builder: (context) => ProfileScreen(username: username)),
       );
     } else {
       setState(() => _status = 'Opened link: $uri');
@@ -73,13 +84,10 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Deep Link Demo',
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(title: const Text('Home')),
         body: Center(child: Text(_status)),
-      ),
-    );
+      );
   }
 }
 
